@@ -16,9 +16,11 @@ const DivInputs = styled.div`
 `;
 
 
+
 export class Filter extends Component {
 
     render() {
+
         return(
             <SectionFiltros>
                 <h1>Filtros</h1>

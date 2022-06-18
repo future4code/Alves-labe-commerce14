@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
-import Cardproduto from './components/Cardproduto';
+import CardProduto from './components/CardProduto';
 import styled from 'styled-components';
+import { Filter } from './components/Filter';
 
-
+const SecaoPrincipal = styled.div`
+    display: flex;
+    flex-direction: row;
+    
+`
+const SecaoProdutos = styled.div`
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+    
+`
 
 
 class App extends React.Component {
@@ -28,15 +39,44 @@ class App extends React.Component {
        valorproduto: "130.000"
       }
 
-    ]
+    ],
+    minValue: -Infinity,
+    maxValue: +Infinity,
+    search: '',
   }
+
+  getMinValue = (e) => {
+    this.setState({
+      minValue: e.target.value
+    })
+  }
+  getMaxValue = (e) => {
+    this.setState({
+      maxValue: e.target.value
+    })
+  }
+  onChangeSearchProduct = (e) => {
+    this.setState({
+      search: e.target.value
+    })
+  }
+  onClickCleanFilters = () => {
+    this.setState({
+      minValue: -Infinity,
+      maxValue: +Infinity,
+      search: '',
+      order: '',
+    })
+  }
+
+
 
 
   render() {
 
     const listaDeProdutos = this.state.produtos.map((produto)=> {
     return (
-     <Cardproduto
+     <CardProduto
         fotoproduto={produto.fotoproduto }
         nomeproduto={produto.nomeproduto}
         valorproduto={produto.valorproduto}
@@ -46,7 +86,21 @@ class App extends React.Component {
 
   return (
       <div> 
-          <div>{listaDeProdutos}</div>
+          <SecaoPrincipal>
+          <Filter
+            getMinValue={this.getMinValue}
+            getMaxValue={this.getMaxValue}
+            onChangeSearchProduct={this.onChangeSearchProduct}
+            onClickCleanFilters={this.onClickCleanFilters}
+            minValue={this.state.minValue}
+            maxValue={this.state.maxValue}
+            searchProduct={this.state.search}
+          />
+            <SecaoProdutos>
+                 {listaDeProdutos}
+            </SecaoProdutos>
+
+          </SecaoPrincipal>
      </div>
     )
   }

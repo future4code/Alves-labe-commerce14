@@ -26,7 +26,7 @@ const Foto = styled.img`
     height: 200px;
 `
 
-class Cardproduto extends React.Component {
+class CardProduto extends React.Component {
   render() {
     return (
       <div>
@@ -43,5 +43,5 @@ class Cardproduto extends React.Component {
   }
 }
 
-export default Cardproduto;
+export default CardProduto;
 

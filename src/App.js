@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Cardproduto from './components/CardProduto';
+
+import CardProduto from './components/CardProduto';
 import styled from 'styled-components';
 import { Filter } from './components/Filter';
 
@@ -47,6 +48,8 @@ class App extends React.Component {
     minValue: -Infinity,
     maxValue: +Infinity,
     search: '',
+tMaxValue = (e) => {
+
   }
 
   getMinValue = (e) => {
@@ -54,19 +57,16 @@ class App extends React.Component {
       minValue: e.target.value
     })
   }
-
   getMaxValue = (e) => {
     this.setState({
       maxValue: e.target.value
     })
   }
-
   onChangeSearchProduct = (e) => {
     this.setState({
       search: e.target.value
     })
   }
-
   onClickCleanFilters = () => {
     this.setState({
       minValue: -Infinity,
@@ -77,22 +77,25 @@ class App extends React.Component {
   }
 
 
+
+
   render() {
 
-    const listaDeProdutos = this.state.produtos.map((produto) => {
-      return (
-        <Cardproduto
-          fotoproduto={produto.fotoproduto}
-          nomeproduto={produto.nomeproduto}
-          valorproduto={produto.valorproduto}
-        />
-      );
-    })
 
+    const listaDeProdutos = this.state.produtos.map((produto)=> {
     return (
+     <CardProduto
+        fotoproduto={produto.fotoproduto }
+        nomeproduto={produto.nomeproduto}
+        valorproduto={produto.valorproduto}
+        />
+    );
+} )
 
-      <div>
-        <SecaoPrincipal>
+  return (
+      <div> 
+          <SecaoPrincipal>
+
           <Filter
             getMinValue={this.getMinValue}
             getMaxValue={this.getMaxValue}
@@ -106,10 +109,13 @@ class App extends React.Component {
                  {listaDeProdutos}
             </SecaoProdutos>
 
-          
-        </SecaoPrincipal>
 
-   
+          </SecaoPrincipal>
+     </div>
+    )
+  }
+}
+
 
    </div>
 )

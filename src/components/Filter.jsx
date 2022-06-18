@@ -1,8 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 
 const SectionFiltros = styled.section`
     border: 1px solid #000;
+    display: block;
+    width: 200px;
+    height: 400px;
+    margin: 20px;
 `;
 
 const DivInputs = styled.div`
@@ -10,6 +14,8 @@ const DivInputs = styled.div`
     flex-direction: column;
     margin: 0 10px;
 `;
+
+
 
 export class Filter extends Component {
 

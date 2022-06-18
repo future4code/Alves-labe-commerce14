@@ -4,6 +4,17 @@ import styled from 'styled-components';
 import { Filter } from './components/Filter';
 
 
+const SecaoPrincipal = styled.div`
+    display: flex;
+    flex-direction: row;
+    
+`
+const SecaoProdutos = styled.div`
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+    
+`
 
 
 class App extends React.Component {
@@ -81,7 +92,7 @@ class App extends React.Component {
     return (
 
       <div>
-        <div className="App">
+        <SecaoPrincipal>
           <Filter
             getMinValue={this.getMinValue}
             getMaxValue={this.getMaxValue}
@@ -91,26 +102,14 @@ class App extends React.Component {
             maxValue={this.state.maxValue}
             searchProduct={this.state.search}
           />
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-            </a>
-          </header>
-        </div>
+            <SecaoProdutos>
+                 {listaDeProdutos}
+            </SecaoProdutos>
 
-=======
-      <div>
-          <div>{listaDeProdutos}</div>
-     </div>
+          
+        </SecaoPrincipal>
 
+   
 
    </div>
 )

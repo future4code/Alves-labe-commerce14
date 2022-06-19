@@ -9,10 +9,20 @@ const SectionFiltros = styled.section`
     margin: 20px;
 `;
 
+const Title = styled.h1`
+    margin-left: 10px;
+    margin-right: 10px;
+`;
+
 const DivInputs = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0 10px;
+    gap: 10px;
+`;
+
+const ButtonCleanFilter = styled.button`
+    margin: 20px 0;
 `;
 
 
@@ -23,7 +33,7 @@ export class Filter extends Component {
 
         return(
             <SectionFiltros>
-                <h1>Filtros</h1>
+                <Title>Filtros</Title>
                 <DivInputs>
                     <label htmlFor="">Valor Mínimo</label>
                     <input type="number" value={this.props.minValue} onChange={this.props.getMinValue}/>
@@ -31,7 +41,15 @@ export class Filter extends Component {
                     <input type="number" value={this.props.maxValue} onChange={this.props.getMaxValue}/>
                     <label htmlFor="">Busca</label>
                     <input type="text" value={this.props.searchProduct} onChange={this.props.onChangeSearchProduct}/>
-                    <button onClick={this.props.onClickCleanFilters}>Limpar Filtros</button>
+                    <label htmlFor="">Ordenar por:</label>
+                    <select name="" id="" onChange={this.props.onChangeSelectSort}>
+                        <option value="">Padrão</option>
+                        <option value="asc value">Preço ↑</option>
+                        <option value="desc value">Preço ↓</option>
+                        <option value="alf a-z">Nome ↑</option>
+                        <option value="alf z-a">Nome ↓</option>
+                    </select>
+                    <ButtonCleanFilter onClick={this.props.onClickCleanFilters}>Limpar Filtros</ButtonCleanFilter>
                 </DivInputs>
             </SectionFiltros>
         )

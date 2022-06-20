@@ -26,7 +26,7 @@ const Foto = styled.img`
     height: 200px;
 `
 
-class CardProduto extends React.Component {
+class Cardproduto extends React.Component {
   render() {
     return (
       <div>
@@ -35,7 +35,7 @@ class CardProduto extends React.Component {
             <ProdutoFooter>
             <h3>{this.props.nomeproduto}</h3>
             <h2>R$ {this.props.valorproduto}</h2>
-            <Botao>COMPRAR</Botao>
+            <Botao onClick={()=> this.props.onAdd(this.props.produto)}>Adicionar ao carrinho</Botao>
             </ProdutoFooter>
           </Produto> 
       </div>
@@ -43,5 +43,5 @@ class CardProduto extends React.Component {
   }
 }
 
-export default CardProduto;
+export default Cardproduto;
 
